@@ -1,4 +1,6 @@
-#! /system/bin/sh
+﻿#! /system/bin/sh
+
+# Root Permission Required!!
 
 checkApp="/data/data/crixec.adbtoolkitsinstall"
 checkPathandroid="/.android"
@@ -19,8 +21,8 @@ echo "ADB Tool Kits Installer is not installed.";am start -a android.intent.acti
 fi
 }
 
-# Get /system writable
-mount -o rw,remount /system
+# Get / writable
+mount -o rw,remount /
 # Make a new directory : /.android
 if [ ! -d $checkPathandroid ]
     then mkdir /.android
@@ -48,8 +50,8 @@ if [ -f $adbPubKeyOld ];then
   echo "The old public key(s) is added."
 fi
 
-# Get /system unwritable
-mount -o ro,remount /system
+# Get / unwritable
+mount -o ro,remount /
 
 # Check "adb devices" 
 echo
